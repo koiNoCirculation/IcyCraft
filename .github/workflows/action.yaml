@@ -1,8 +1,5 @@
 name: test
 on:
-  pull_request:
-    types: 
-      - closed
   push:
     branches:
       - main
@@ -10,11 +7,10 @@ on:
 
 jobs:
   build: 
-    #if: github.repository == 'koiNoCirculation/IcyCraft' && github.event.pull_request.merged == true
+    if: github.repository == 'koiNoCirculation/IcyCraft'
     runs-on: ubuntu-latest
     env:
       REPO: ${{github.repository}}
       EVENT: ${{github.event.pull_request.merge}}
     steps:
       - run: echo $REPO
-      - run: echo $EVENT
